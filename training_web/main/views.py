@@ -74,7 +74,7 @@ def postsignUp(request):
 def denoiseImage(request, username):
     uploadedFile = request.FILES.get('image_to_process')
     fs = FileSystemStorage()
-    print(username)
+    username =  username.replace('@', '')
     filename = fs.save('images/' + username + '.' + uploadedFile.name, uploadedFile)
     uploaded_file_url = fs.url(filename)
     print(uploaded_file_url)
