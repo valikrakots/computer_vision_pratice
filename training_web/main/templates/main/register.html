@@ -1,0 +1,49 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+    {% if message %}
+        <div class="container mx-auto text-center">
+            <p style="color: red">{{ message }}</p>
+        </div>
+    {% endif %}
+
+    <div class="container mx-auto p-5">
+        <form action="/postsignUp/" method="post">
+            {% csrf_token %}
+            <h1>Sign Up</h1>
+            <p class="py-3">Please fill in this form</p>
+
+
+            <!-- Email: -->
+            <div class="form-group row">
+                <label for="Email" class="col-sm-4 col-form-label">Email</label>
+                <div class="col-sm-8">
+                    <input type="email" id="Email" name="email" placeholder="Your Email Id"><br><br>
+                </div>
+            </div>
+            <!-- Password: -->
+            <div class="form-group row">
+                <label for="Password" class="col-sm-4 col-form-label">Password</label>
+                <div class="col-sm-8">
+                    <input type="password" id="Password" name="pass" placeholder="Password"><br><br>
+                </div>
+            </div>
+            <!-- RepeatPassword: -->
+            <div class="form-group row">
+                <label for="confirm_password" class="col-sm-4 col-form-label">Confirm Password</label>
+                <div class="col-sm-8">
+                    <input type="password" id="pass_repeat" name="pass_repeat"
+                           placeholder=" Repeat Password"><br><br>
+                </div>
+            </div>
+            <br>
+            <br>
+            <input type="submit" class="btn btn-primary mb-2" value="SignUp"><br><br>
+            <br>
+            <p class="small fw-bold mt-2 pt-1 mb-0">Already have account? <a href="{% url 'sign_in' %}">Login</a></p>
+        </form>
+    </div>
+
+
+
+{% endblock %}
