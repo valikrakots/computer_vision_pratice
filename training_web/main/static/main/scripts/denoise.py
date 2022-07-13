@@ -23,7 +23,6 @@ def predict(path):
     loaded_model.load_weights("media/model/autoencoder_documents_weights.h5")
 
     loaded_model.compile(optimizer='adam', loss='mse', metrics=['accuracy'])
-
     test_data, in_width, in_height = load_image(path[1:])
     test_data = np.asarray(test_data).astype('float32').reshape(-1, height, width, 1)
     predictions = loaded_model.predict(test_data)
